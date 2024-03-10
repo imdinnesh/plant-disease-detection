@@ -3,6 +3,8 @@ import DragDrop from '../Components/DragDrop'
 import LobbyScreen from './Lobby'
 
 import { useFirebase } from '../ContextProvider/FireBaseProvider'
+import NavBar from '../Components/NavBar'
+import Footer from '../Components/Footer'
 
 function HomaPage() {
 
@@ -23,6 +25,7 @@ function HomaPage() {
     if (active) {
         return (
             <div className='mt-36'>
+                <NavBar/>
                 <div className='flex'>
                     <div className='w-1/2 p-9'>
                         <h1 className='text-5xl font-bold font-mono'><span className='text-green-600'>Plant</span> Disease
@@ -35,6 +38,7 @@ function HomaPage() {
                         <DragDrop />
                     </div>
                 </div>
+                <Footer/>
             </div>
         )
     }
