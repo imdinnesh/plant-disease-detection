@@ -1,9 +1,9 @@
 import './App.css'
 import { Route, Routes } from 'react-router-dom'
 import HomePage from './Pages/HomePage'
-import NavBar from './Components/NavBar'
 import SignupPage from './Pages/Register'
 import SignInPage from './Pages/Login'
+import LobbyScreen from './Pages/Lobby'
 
 function App() {
   //Main page for routing...
@@ -11,9 +11,10 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path='/' element={<HomePage/>}/>
+        <Route path='/' element={<LobbyScreen/>}/>
         <Route path='/register' element={<SignupPage/>}/>
         <Route path='/login' element={<SignInPage/>}/>
+        <Route path='/home' element={<HomePage/>}/>
       </Routes>
     </>
   )

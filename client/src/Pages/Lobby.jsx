@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 const LobbyScreen = () => {
 
+
     const navigate=useNavigate()
     return (
         <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-500 to-purple-600">

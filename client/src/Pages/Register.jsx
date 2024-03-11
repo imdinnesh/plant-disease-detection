@@ -21,7 +21,7 @@ const SignupPage = () => {
 
     useEffect(()=>{
         if(firebase.isloggedIn){
-            navigate('/');
+            navigate('/home');
         }
     },[firebase,firebase.isloggedIn])
 

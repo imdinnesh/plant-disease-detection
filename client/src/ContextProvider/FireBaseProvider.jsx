@@ -2,6 +2,7 @@ import {React,useState,useContext,useEffect} from 'react'
 import { createContext} from 'react';
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "firebase/auth";
+import { useNavigate } from 'react-router-dom';
 const firebaseConfig = {
     apiKey: "AIzaSyA0WhMsxoZBbJs8zICb7E56jW_lTiJbmLw",
     authDomain: "plant-disease-866e0.firebaseapp.com",
@@ -14,6 +15,7 @@ const firebaseConfig = {
 const FireBaseContext=createContext(null)
 const fireBaseApp = initializeApp(firebaseConfig);
 const fireBaseAuth = getAuth(fireBaseApp);
+
 
 export const useFirebase = () => {
     return useContext(FireBaseContext);
@@ -33,12 +35,14 @@ export const FireBaseProvider=(props)=>{
         return signInWithEmailAndPassword(fireBaseAuth, email, password)
     }
 
+    const navigate=useNavigate();
+
     const logout = () => {
         signOut(fireBaseAuth).then(() => {
             console.log("Sign-out successful.")
         }).catch((error) => {
             console.log("Sign-out failed.", error)
-        });
+        }).finally(navigate('/'))
     }
 
     useEffect(() => {
