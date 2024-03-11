@@ -1,9 +1,20 @@
-import React from 'react';
+import React,{useEffect}from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useFirebase } from '../ContextProvider/FireBaseProvider';
 const LobbyScreen = () => {
 
-
     const navigate=useNavigate()
+    const firebase=useFirebase()
+    if(firebase.isloggedIn){
+        navigate('/home')
+    }
+    // useEffect(()=>{
+    //     if(firebase.isloggedIn){
+    //         navigate('/home');
+    //     }
+    // },[])
+
+
     return (
         <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-500 to-purple-600">
             <div className="max-w-md w-full bg-white rounded-xl shadow-lg p-8">
