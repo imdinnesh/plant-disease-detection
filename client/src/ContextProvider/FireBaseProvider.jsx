@@ -26,6 +26,7 @@ export const FireBaseProvider=(props)=>{
 
 
     const [isloggedIn, setIsLoggedIn] = useState(null);
+    const [redirect,setRedirect]=useState(true)
 
     const signUp = (email, password) => {
         return createUserWithEmailAndPassword(fireBaseAuth, email, password)
@@ -49,18 +50,19 @@ export const FireBaseProvider=(props)=>{
         onAuthStateChanged(fireBaseAuth, (user) => {
             if (user) {
                 setIsLoggedIn(user);
+                setRedirect(true)
                 console.log("Registered succesfully", user.email);
             }
             else {
                 setIsLoggedIn(null);
             }
         })
-    }, [])
+    }, [isloggedIn])
     
     
 
     return (
-        <FireBaseContext.Provider value={{signIn,signUp,logout,isloggedIn}}>
+        <FireBaseContext.Provider value={{signIn,signUp,logout,isloggedIn,redirect,setRedirect}}>
             {props.children}
         </FireBaseContext.Provider>
     )

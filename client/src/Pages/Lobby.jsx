@@ -5,14 +5,12 @@ const LobbyScreen = () => {
 
     const navigate=useNavigate()
     const firebase=useFirebase()
-    if(firebase.isloggedIn){
-        navigate('/home')
-    }
-    // useEffect(()=>{
-    //     if(firebase.isloggedIn){
-    //         navigate('/home');
-    //     }
-    // },[])
+    
+    useEffect(()=>{
+        if(firebase.reDirect==true){
+            navigate('/home');
+        }
+    },[firebase.redirect])
 
 
     return (

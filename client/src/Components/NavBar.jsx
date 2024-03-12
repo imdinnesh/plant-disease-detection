@@ -7,6 +7,7 @@ export default function NavBar() {
 
     const firebase = useFirebase();
     const handleLogout = () => {
+        firebase.setRedirect(false)
         firebase.logout()
     }
     
