@@ -4,6 +4,7 @@ import HomePage from './Pages/HomePage'
 import SignupPage from './Pages/Register'
 import SignInPage from './Pages/Login'
 import LobbyScreen from './Pages/Lobby'
+import About from './Pages/About'
 
 function App() {
   //Main page for routing...
@@ -15,6 +16,9 @@ function App() {
         <Route path='/register' element={<SignupPage/>}/>
         <Route path='/login' element={<SignInPage/>}/>
         <Route path='/home' element={<HomePage/>}/>
+        <Route path='/about' element={<About/>}/>
+        <Route path='/services' element={<About/>}/>
+        <Route path='/contact' element={<About/>}/>
       </Routes>
     </>
   )

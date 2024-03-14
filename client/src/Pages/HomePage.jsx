@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import DragDrop from '../Components/DragDrop'
 import NavBar from '../Components/NavBar'
 import Footer from '../Components/Footer'
@@ -14,7 +14,8 @@ function HomePage() {
                         <br />
                         <span className='text-red-600'>Detection</span> & Monitoring</h1>
                     <p className='mt-10 font-semibold text-xl'>Just drag and drop image of leaves to detect plant disease</p>
-                    <button className=' mt-8 w-36 h-10 px-2 py-1 bg-slate-700 rounded-md text-white'>Get Started</button>
+                    <button
+                    className=' mt-8 w-36 h-10 px-2 py-1 bg-slate-700 rounded-md text-white'>Get Started</button>
                 </div>
                 <div className='w-1/2'>
                     <DragDrop />
