@@ -7,6 +7,8 @@ import StepsInfo from '../Components/StepsInfo'
 
 function HomePage() {
 
+    const [fileName, setFileName] = useState('');
+
     return (
         <div>
 
@@ -17,7 +19,7 @@ function HomePage() {
                         <h1 className='text-5xl font-bold font-mono'><span className='text-green-600'>Plant</span> Disease
                             <br />
                             <span className='text-red-600'>Detection</span> & Monitoring</h1>
-                        <p className='mt-10 font-semibold text-xl'>Just drag and drop image of leaves to detect plant disease</p>
+                        <p className='mt-10 font-semibold text-xl'>Harness the power of AI to monitor and detect plant diseases. Simply upload an image of the plant leaf and let our system do the rest.</p>
                         <button
                             className=' mt-8 w-36 h-10 px-2 py-1 bg-slate-700 rounded-md text-white'>Get Started</button>
                     </div>
@@ -26,7 +28,15 @@ function HomePage() {
                     </div>
                 </div>
                 <StepsInfo />
-                <DragDrop />
+                <div className='mt-10'>
+                    <div className='w-1/2'>
+                        <DragDrop setFileNameFn={setFileName} setFileNameVar={setFileName}/>
+
+                    </div>
+                    <div className='w-1/2'>
+                    </div>
+
+                </div>
                 <Footer />
             </div>
         </div>
