@@ -15,7 +15,7 @@ function StepsInfo() {
                 <Arrow />
                 <Step
                     title='Step 2'
-                    description='Click on detect button'
+                    description='Click on predict button'
                 />
                 <Arrow />
                 <Step

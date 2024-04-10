@@ -1,8 +1,15 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import { useMlData } from '../ContextProvider/MlDataProvider.jsx';
+
 
 const DragDrop = () => {
     const [file, setFile] = useState(null);
     const [dragOver, setDragOver] = useState(false);
+    const [data, setData] = useState(null);
+
+    const mlData=useMlData()
+
 
     const handleDragEnter = (e) => {
         e.preventDefault();
@@ -27,10 +34,41 @@ const DragDrop = () => {
 
     const handleRemoveImage = () => {
         setFile(null);
+        mlData.setClassData(null)
     };
 
+    const sendFile = async () => {
+        
+        if (file) {
+            mlData.setIsLoading(true)
+            let formData = new FormData();
+            formData.append("file", file);
+            let res = await axios({
+                method: "post",
+                url: process.env.REACT_APP_API_URL,
+                data: formData,
+            });
+            if (res.status === 200) {
+                //alert(`class:${res.data.class} confidence:${res.data.confidence}`)
+                setData(res.data);
+                mlData.setClassData(res.data)
+                mlData.setIsLoading(false)
+            }
+        }
+    }
+
+    // useEffect(() => {
+    //     if (file) {
+    //         sendFile()
+    //     }
+    // }, [file])
+
+
+
+
+
     return (
-        <div className="flex justify-center items-center">
+        <div className='flex flex-col space-y-4 items-center'>
             <div
                 className={`w-2/3 h-96 rounded-lg border-2 border-dashed flex items-center justify-center ${dragOver ? 'border-blue-500' : 'border-gray-300'
                     }`}
@@ -91,6 +129,10 @@ const DragDrop = () => {
                     </div>
                 )}
             </div>
+
+            <button
+                onClick={sendFile}
+                className='w-40 h-16 px-4 py-2 rounded-md bg-black text-white'>Predict</button>
         </div>
     );
 };

@@ -4,13 +4,16 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import App from './App.jsx'
 import './index.css'
 import { FireBaseProvider } from './ContextProvider/FireBaseProvider.jsx'
+import { MlDataProvider } from './ContextProvider/MlDataProvider.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
 
   <React.StrictMode>
     <Router>
       <FireBaseProvider>
-        <App />
+        <MlDataProvider>
+          <App />
+        </MlDataProvider>
       </FireBaseProvider>
     </Router>
   </React.StrictMode>,
